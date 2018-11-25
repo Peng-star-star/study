@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springBoot.dao.UserInfoDao">
+
+	<!-- 根据ID查询用户 -->
+	<select id="getById" resultType="com.example.springBoot.entity.User">
+		select 
+			<include refid="Base_Column_List"></include>,
+		    d.depart_name 	as "deptName",
+		    d.sssj			as "dcode",
+			r.id			as "rid",
+			r.name			as "rname"
+		 from t_user_info t 
+		 left join t_depart_info d on t.depart_id=d.depart_id
+		 left join t_user_role ur on t.user_id=ur.user_id
+	     left join t_role_info r on r.id = ur.role_id
+		 where t.user_id = #{id} and rownum = 1
+	</select>
+	<!-- 新增用户 -->
+	<insert id="add" parameterType="com.example.springBoot.entity.User">
+		insert into t_user_info(user_id,user_short,user_name,user_type,user_handset,depart_id,user_password,login_name) 
+		values (#{userId},#{userShort},#{userName},#{userType},#{phone},#{deptId},#{password},#{loginName})
+	</insert>
+	
+	<!-- 修改用户 -->
+	<update id="update" parameterType="com.example.springBoot.entity.User">
+		update t_user_info 
+		set user_name		=#{userName},
+			user_handset	=#{phone},
+			depart_id 		=#{deptId}
+		where user_id = #{userId}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" >
+		delete from t_user_info where user_id in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<sql id="Base_Column_List">
+		t.user_id        	as "userId",
+		t.user_short     	as "userShort",
+		t.user_name      	as "userName",
+		t.user_type			as "userType",
+		t.user_handset		as "phone",
+		t.depart_id 		as "deptId",
+		t.login_name		as "loginName"
+	</sql>	
+</mapper>

@@ -1,0 +1,99 @@
+
+html{
+	height: 100%;
+}
+.loginpage {
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+.loginpage .footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 0 0 0 1em;
+	
+}
+.loginbg {
+	position: relative;
+	height: 100%;
+	background-image: url("../img/bg.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.loginbg::before {
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+.loginbg::before {
+	content: "";
+	display: inline-block;
+	/**background-color: rgba(84, 108, 112, .2);**/
+	position: absolute;
+	height: 100%;
+}
+.form-landing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%); /* IE 9 */
+    -webkit-transform: translate(-50%,-50%);
+	max-width: 29em;
+	width: 100%;
+	margin: 0 auto;
+	font-size: .925em;
+	z-index: 10;
+}
+.form-landing2 {
+	position: absolute;
+	top: 45%;
+	right: 20%;
+	transform:translate(30%,-50%);
+    -ms-transform:translate(30%,-50%); /* IE 9 */
+    -webkit-transform: translate(30%,-50%);
+	max-width: 26em;
+	width: 100%;
+	margin: 0 auto;
+	font-size: .925em;
+	z-index: 10;
+}
+.form-landing2 .side-head {
+    padding: 1.5em 0;
+    padding-top: 0;
+}
+.form-box {
+    background-color: #fff;
+    border-radius: .5em;
+    padding: 3em 2em;
+    opacity: 0.93;
+}
+.form-landing .side-head {
+    padding: 1.5em 0;
+    padding-top: 0;
+}
+
+.side-head .logo {
+    width: 4em;
+    height: auto;
+    margin-bottom: .3em;
+}
+.side-head h3 {
+	margin-top: 0;
+}
+.index-head{
+	background-color: rgba(5, 131, 233, 0.69);
+}
+.input-group .form-control {
+   height: 40px;
+}
+.input-group .vcode {
+	padding: 0px;
+}
+.input-group .vcode > img {
+	height: 38px;
+	width:80px;
+	cursor: pointer;
+}
