@@ -1,5 +1,6 @@
 package com.example.springBoot.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,9 @@ import java.util.List;
  * @author peng
  *
  */
-public class UserShiro {
+public class UserShiro implements Serializable {
+
+	private static final long serialVersionUID = -4852732617765810959L;
 	private String id;
 	private String name;
 	private String password;

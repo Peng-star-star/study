@@ -5,27 +5,49 @@ import java.util.Map;
 
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 
 @Configuration
 public class ShiroConfiguration {
-	
-	//将自己的验证方式加入容器
-    @Bean
-    public ShiroRealm myShiroRealm() {
-        ShiroRealm myShiroRealm = new ShiroRealm();
-        return myShiroRealm;
-    }
 
     //权限管理，配置主要是Realm的管理认证
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        //配置Realm
         securityManager.setRealm(myShiroRealm());
+        //配置RememberMeManager
+        securityManager.setRememberMeManager(rememberMeManager());
         return securityManager;
+    }
+    
+    //将自己的验证方式加入容器
+    @Bean
+    public ShiroRealm myShiroRealm() {
+        ShiroRealm myShiroRealm = new ShiroRealm();
+        return myShiroRealm;
+    }
+    
+    private CookieRememberMeManager rememberMeManager() {
+        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+        cookieRememberMeManager.setCookie(rememberMeCookie());
+        // rememberMe cookie 加密的密钥
+        cookieRememberMeManager.setCipherKey(Base64.decode("4AvVhmFLUs0KTA3Kprsdag=="));
+        return cookieRememberMeManager;
+    }
+    
+    private SimpleCookie rememberMeCookie() {
+        // 设置 cookie 名称，对应 login.html 页面的 <input type="checkbox" name="rememberMe"/>
+        SimpleCookie cookie = new SimpleCookie("rememberMe");
+        // 设置 cookie 的过期时间，单位为秒，这里为一天
+        cookie.setMaxAge(86400);
+        return cookie;
     }
 
     //Filter工厂，设置对应的过滤条件和跳转条件
@@ -37,14 +59,15 @@ public class ShiroConfiguration {
         Map<String,String> map = new LinkedHashMap<String, String>();
         //登出
         map.put("/logout/","logout");
-        //设置免认证url
+        //设置免认证url,如果没有免认证url将转到login
         map.put("/css/**", "anon");
         map.put("/js/**", "anon");
         map.put("/img/**", "anon");
         map.put("/lib/**", "anon");
         map.put("/gifCode", "anon");
-        //对非以上的url进行认证
-        map.put("/**","authc");
+        map.put("/logout", "logout");//登出
+        //对非以上的url进行user认证,暂不使用authc
+        map.put("/**", "user");
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
         //首页

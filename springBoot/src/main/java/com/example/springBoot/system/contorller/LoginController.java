@@ -14,6 +14,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,15 +31,14 @@ public class LoginController {
 	//验证码
 	private static final String CODE_KEY = "_code";
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseBo login(@RequestParam String username, @RequestParam String password, String code, Boolean rememberMe) {
-		//
+	@PostMapping("/login")
+	public ResponseBo login(@RequestParam String userName, @RequestParam String password, String code, Boolean rememberMe) {
 		if (!StringUtils.isNotBlank(code)) {
 			return ResponseBo.warn("验证码不能为空！");
 		}
@@ -46,7 +47,8 @@ public class LoginController {
 		if (!code.equalsIgnoreCase(sessionCode)) {
 			return ResponseBo.warn("验证码错误！");
         }
-		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, password,rememberMe);
+		usernamePasswordToken.setRememberMe(true);
 		try {
 			subject.login(usernamePasswordToken);
 		} catch (UnknownAccountException | IncorrectCredentialsException | LockedAccountException e) {
