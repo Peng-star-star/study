@@ -1,5 +1,9 @@
 # 学习搭建web框架
 **参考：https://github.com/wuyouzhuguli/FEBS-Shiro**  
+**暂存问题**
+* rememberme 未实现  
+* 用户权限未读数据库  
+
 **技术选型**  
 **后端**  
 * 基础框架：Spring Boot 1.5.6
@@ -21,6 +25,10 @@
 * 基础框架：?  
 
 * JavaScript框架：jQuery  
+
+* 模块化：AMD  
+
+* 框架: vue  
 
 * 消息组件：?  
 
