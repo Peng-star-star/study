@@ -58,3 +58,6 @@
 * 数据库：oracle  
 
 * 版本管理：git  
+
+**遇到问题及解决**   
+* shiro的rememberMe不生效 https://www.cnblogs.com/SmilingEye/p/10060278.html
