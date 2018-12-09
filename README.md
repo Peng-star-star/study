@@ -1,8 +1,7 @@
 # 学习搭建web框架
 **参考：https://github.com/wuyouzhuguli/FEBS-Shiro**  
 **暂存问题**
-* rememberme 未实现  
-* 用户权限未读数据库  
+* role与menu测试类    
 
 **技术选型**  
 **后端**  
@@ -20,9 +19,11 @@
 
 * 日志打印：logback
 
+* 其他：spark
+
 
 **前端**
-* 基础框架：?  
+* 基础框架：Bootstrap  
 
 * JavaScript框架：jQuery  
 
