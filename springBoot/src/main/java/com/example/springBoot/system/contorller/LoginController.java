@@ -48,7 +48,6 @@ public class LoginController {
 			return ResponseBo.warn("验证码错误！");
         }
 		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, password,rememberMe);
-		usernamePasswordToken.setRememberMe(true);
 		try {
 			subject.login(usernamePasswordToken);
 		} catch (UnknownAccountException | IncorrectCredentialsException | LockedAccountException e) {

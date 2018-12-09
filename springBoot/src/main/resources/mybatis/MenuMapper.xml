@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springBoot.system.dao.UserDao">
+
+	<!-- 查询菜单 -->
+	<select id="getMenus" resultType="com.example.springBoot.system.entity.Menu">
+		select t.id        as "id",
+		       t.parent_id as "parentId",
+		       t.menu_name as "menuName",
+		       t.url       as "url",
+		       t.perms     as "perms",
+		       t.icon      as "icon",
+		       t.type      as "type",
+		       t.order_num as "orderNum",
+		       t.status    as "status",
+		       t.remarks   as "remarks"
+		  from t_menu t
+		  <where>
+		  		<if test="params.id != null ">and t.id=#{params.id}</if>
+		  		<if test="params.parentId != null ">and t.parent_id=#{params.parentId}</if>
+		  		<if test="params.menuName != null ">and t.menu_name=#{params.menuName}</if>
+		  		<if test="params.type != null ">and t.type=#{params.type}</if>
+		  		<if test="params.status != null ">and t.status=#{params.status}</if>
+		  		<if test="params.roleId != null ">and t.id in 
+		  			(select rm.menu_id from t_role_menu rm where rm.role_id =#{params.roleId})
+		  		</if>
+		  </where>
+	</select>
+	<!-- 新增菜单 -->
+	<insert id="addMenu" parameterType="com.example.springBoot.system.entity.Menu">
+		insert into t_menu
+		  (id, parent_id, menu_name, url, perms, icon, type, order_num, status, remarks)
+		values
+		  (#{id},#{parentId},#{menuName},#{url},#{perms},#{icon},#{type},#{orderNum},#{status},#{remarks})
+	</insert>
+	
+	<!-- 修改菜单 -->
+	<update id="updateMenu" parameterType="com.example.springBoot.system.entity.Menu">
+		update t_menu t
+		   set t.parent_id = #{parentId},
+		       t.menu_name = #{menuName}, 
+		   	   t.url = #{url}, 
+		       t.perms = #{perms}, 
+		       t.icon = #{icon}, 
+		       t.type = #{type}, 
+		       t.order_num = #{orderNum}, 
+		       t.status = #{status}, 
+		   	   t.remarks = #{remarks}
+		 where t.id = #{id}
+	</update>
+	
+	<!-- 删除菜单 -->
+	<delete id="deleteMenus" >
+		delete from t_menu where id in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

@@ -55,17 +55,17 @@ public class ShiroConfiguration {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        //注意使用有顺序的map，后面一个覆盖前一个
+        //注意使用有顺序的map
         Map<String,String> map = new LinkedHashMap<String, String>();
         //登出
-        map.put("/logout/","logout");
+        map.put("/logout","logout");
         //设置免认证url,如果没有免认证url将转到login
         map.put("/css/**", "anon");
         map.put("/js/**", "anon");
         map.put("/img/**", "anon");
         map.put("/lib/**", "anon");
         map.put("/gifCode", "anon");
-        map.put("/logout", "logout");//登出
+        map.put("/index", "user");
         //对非以上的url进行user认证,暂不使用authc
         map.put("/**", "user");
         //登录

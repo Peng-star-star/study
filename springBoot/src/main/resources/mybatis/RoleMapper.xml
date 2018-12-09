@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springBoot.system.dao.RoleDao">
+
+	<!-- 查询角色 -->
+	<select id="getRoles" resultType="com.example.springBoot.system.entity.Role">
+		select t.id          as "id",
+		       t.role_name   as "roleName",
+		       t.create_time as "createTime",
+		       t.update_time as "updateTime"
+		  from t_role t
+		  <where>
+		  		<if test="params.id != null ">and t.id=#{params.id}</if>
+		  		<if test="params.roleName != null ">and t.role_name=#{params.roleName}</if>
+		  		<if test="params.userId != null ">and t.id in 
+		  			(select ur.role_id from t_user_role ur where ur.user_id =#{params.userId})
+		  		</if>
+		  		<if test="params.menuId != null ">and t.id in 
+		  			(select rm.role_id from t_role_menu rm where rm.menu_id =#{params.menuId})
+		  		</if>
+		  </where>
+	</select>
+	<!-- 新增角色 -->
+	<insert id="addRole" parameterType="com.example.springBoot.system.entity.Role">
+		insert into t_role
+		  (id, role_name, create_time, update_time)
+		values
+		  (#{id},#{roleName},sysdate,sysdate)
+	</insert>
+	
+	<!-- 修改角色 -->
+	<update id="updateRole" parameterType="com.example.springBoot.system.entity.Role">
+		update t_role t
+		   set t.role_name = #{roleName}, 
+		   	   t.update_time = sysdate
+		 where t.id = #{id}
+	</update>
+	
+	<!-- 删除角色 -->
+	<delete id="deleteRoles" >
+		delete from t_role where id in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.springBoot.system.entity.User;
+
 @Controller
 public class HelloWorldController {
 	
 	@RequestMapping("/index")
 	public String index(ModelMap map){
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
 		map.addAttribute("host", "http://blog.didispace.com");
+		map.addAttribute("user", user);
 		return "index";
 	}
 	

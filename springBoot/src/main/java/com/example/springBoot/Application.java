@@ -12,7 +12,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 
 @SpringBootApplication
-@MapperScan("com.example.springBoot.dao")
+@MapperScan("com.example.springBoot.*.dao")
 public class Application {
 
 	public static void main(String[] args) {

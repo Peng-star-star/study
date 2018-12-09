@@ -1,6 +1,7 @@
-package com.example.springBoot.entity;
+package com.example.springBoot.system.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,12 +10,15 @@ import java.util.List;
  * @author peng
  *
  */
-public class UserShiro implements Serializable {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = -4852732617765810959L;
 	private String id;
+	private String userName;
 	private String name;
 	private String password;
+	private Date createTime;
+	private Date updateTime;
 
 	private List<Role> roles;
 
@@ -24,6 +28,14 @@ public class UserShiro implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getName() {
@@ -42,6 +54,22 @@ public class UserShiro implements Serializable {
 		this.password = password;
 	}
 
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -49,5 +77,4 @@ public class UserShiro implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
 }
