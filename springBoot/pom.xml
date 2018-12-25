@@ -28,12 +28,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
 		</dependency>
 
 		<dependency>
@@ -69,6 +63,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+		   <groupId>net.sourceforge.nekohtml</groupId>
+		   <artifactId>nekohtml</artifactId>
+		   <version>1.9.21</version>
+		</dependency>
+		
 		<dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>

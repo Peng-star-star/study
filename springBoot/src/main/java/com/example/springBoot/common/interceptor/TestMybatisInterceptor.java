@@ -1,4 +1,4 @@
-package com.example.springBoot.mybatis;
+package com.example.springBoot.common.interceptor;
 
 import java.sql.Connection;
 import java.util.Properties;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class ,Integer.class}) })
-public class TestInterceptor implements Interceptor{
+public class TestMybatisInterceptor implements Interceptor{
 
 	@Override
 	public Object intercept(Invocation arg0) throws Throwable {

@@ -14,6 +14,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.springBoot.common.entity.ResponseBo;
 import com.example.springBoot.common.util.vcode.Captcha;
 import com.example.springBoot.common.util.vcode.GifCaptcha;
+import com.example.springBoot.system.entity.User;
 
 @Controller
 public class LoginController {
@@ -61,6 +63,13 @@ public class LoginController {
 	@RequestMapping("/")
 	public String redirectIndex() {
 		return "redirect:/index";
+	}
+	
+	@RequestMapping("/index")
+	public String index(ModelMap map){
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		map.addAttribute("user", user);
+		return "index";
 	}
 
 	@RequestMapping("/gifCode")

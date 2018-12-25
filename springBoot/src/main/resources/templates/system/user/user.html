@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
+<link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.css}" />
+<link rel="stylesheet" th:href="@{/lib/bootstrap-table/bootstrap-table.css}"/>
+<link rel="stylesheet" th:href="@{/lib/multiple-select/multiple-select.css}"/>
+<link rel="stylesheet" th:href="@{/lib/sweetalert2/sweetalert2.css}"/>
+
+<script data-th-src="@{/lib/jquery.js}"></script>
+<script data-th-src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+<script data-th-src="@{/lib/bootstrap-table/bootstrap-table.min.js}"></script>
+<script data-th-src="@{/lib/bootstrap-table/locale/bootstrap-table-zh-CN.js}"></script>
+<script data-th-src="@{/lib/bootstrap-notify/bootstrap-notify.min.js}"></script>
+<script data-th-src="@{/lib/multiple-select/multiple-select.js}"></script>
+<script data-th-src="@{/lib/sweetalert2/sweetalert2.js}"></script>
+<script data-th-src="@{/lib/vue.js}"></script>
+<script data-th-src="@{/lib/require.js}"></script>
+
+<script data-th-src="@{/js/common/common.js}"></script>
+<link rel="stylesheet" data-th-href="@{/css/app.css}" />
+<title></title>
+<style type="text/css">
+	.input-group-addon{
+		width:auto;
+	}
+</style>
+</head>
+<body>
+	<div class="card">
+	    <div data-th-include="system/user/userAdd"></div>
+	    <div class="card-block">
+	        <div class="table-responsive">
+	            <div id="data-table_wrapper" class="dataTables_wrapper">
+	                <div class="dataTables_buttons hidden-sm-down actions">
+	                    <span class="actions__item glyphicon glyphicon-search" id="search_button" title="搜索"></span> 
+	                    <span class="actions__item glyphicon glyphicon-refresh" id="refresh_button" title="刷新"></span>
+	                    <div class="dropdown actions__item">
+	                        <i data-toggle="dropdown" class="glyphicon glyphicon-save"> </i>
+	                        <ul class="dropdown-menu dropdown-menu-right">
+	                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="excel" onclick="exportUserExcel()">
+								Excel (.xlsx) </a>
+	                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="csv" onclick="exportUserCsv()"> CSV
+								(.csv) </a>
+	                        </ul>
+	                    </div>
+	                    <div class="dropdown actions__item" shiro:hasAnyPermissions="user:add,user:delete,user:update">
+	                        <i data-toggle="dropdown" class="glyphicon glyphicon-option-vertical"></i>
+	                        <div class="dropdown-menu dropdown-menu-right">
+	                            <a href="javascript:void(0)" class="dropdown-item" id="add_button" shiro:hasPermission="user:add">新增用户</a>
+	                            <a href="javascript:void(0)" class="dropdown-item" id="update_button" shiro:hasPermission="user:update">修改用户</a>
+	                            <a href="javascript:void(0)" class="dropdown-item" id="delete_button" shiro:hasPermission="user:delete">删除用户</a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div id="data-table_filter" class="dataTables_filter">
+	                    <form class="user-table-form">
+	                        <div class="row form-inline">
+	                         	<div class="col-sm-3">
+	                                <div class="form-group">
+									    <label for="userName">用户名：</label>
+									    <input type="text" class="form-control" id="userName" v-model="params.userName"/>
+									 </div>
+	                            </div>                    
+	                        </div>
+	                    </form>
+	                </div>
+	                <table id="userTable" data-mobile-responsive="true" class="mb-bootstrap-table text-nowrap"></table>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+
+	require([ '/js/app/user/user.js' ], function(index) {
+		index.init();
+	});
+</script>
+</html>

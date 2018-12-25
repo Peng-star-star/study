@@ -18,7 +18,7 @@ public class Menu implements Serializable {
 	private String perms;
 	private String icon;
 	private String type;
-	private String orderNum;
+	private Integer orderNum;
 	private String status;
 	private String remarks;
 
@@ -78,11 +78,11 @@ public class Menu implements Serializable {
 		this.type = type;
 	}
 
-	public String getOrderNum() {
+	public Integer getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(String orderNum) {
+	public void setOrderNum(Integer orderNum) {
 		this.orderNum = orderNum;
 	}
 

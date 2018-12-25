@@ -17,17 +17,14 @@ import com.example.springBoot.system.entity.User;
 @Controller
 public class HelloWorldController {
 	
-	@RequestMapping("/index")
-	public String index(ModelMap map){
-		User user = (User) SecurityUtils.getSubject().getPrincipal();
-		map.addAttribute("host", "http://blog.didispace.com");
-		map.addAttribute("user", user);
-		return "index";
-	}
-	
 	@RequestMapping("/hello")
 	public String hello() throws Exception{
 		throw new Exception("出现异常");
+	}
+	
+	@RequestMapping("/tab")
+	public String tab(){
+		return "tab";
 	}
     
     @RequestMapping(value = "/success/index")

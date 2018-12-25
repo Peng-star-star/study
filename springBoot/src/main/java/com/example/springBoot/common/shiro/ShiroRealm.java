@@ -1,4 +1,4 @@
-package com.example.springBoot;
+package com.example.springBoot.common.shiro;
 
 import java.util.HashMap;
 import java.util.HashSet;

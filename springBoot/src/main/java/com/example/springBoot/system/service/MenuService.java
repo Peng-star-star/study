@@ -3,6 +3,7 @@ package com.example.springBoot.system.service;
 import java.util.List;
 import java.util.Map;
 
+import com.example.springBoot.common.entity.Tree;
 import com.example.springBoot.system.entity.Menu;
 import com.example.springBoot.system.entity.Role;
 
@@ -26,6 +27,12 @@ public interface MenuService {
 	 * @return
 	 */
 	Menu getMenu(String id);
+	
+	/**
+	 * 获取菜单树
+	 * @return
+	 */
+	Tree<Menu> getMenuTree();
 	
 	void addMenu(Menu menu);
 	

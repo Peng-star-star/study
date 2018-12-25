@@ -1,4 +1,4 @@
-package com.example.springBoot;
+package com.example.springBoot.common.config;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,6 +10,9 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.example.springBoot.common.shiro.ShiroRealm;
+
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 
@@ -65,9 +68,10 @@ public class ShiroConfiguration {
         map.put("/img/**", "anon");
         map.put("/lib/**", "anon");
         map.put("/gifCode", "anon");
-        map.put("/index", "user");
+        map.put("/index", "anon");
+        map.put("/tab", "anon");
         //对非以上的url进行user认证,暂不使用authc
-        map.put("/**", "user");
+        map.put("/**", "anon");
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
         //首页

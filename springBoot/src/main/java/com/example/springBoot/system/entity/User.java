@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * 用户
  * 
@@ -17,6 +21,8 @@ public class User implements Serializable {
 	private String userName;
 	private String name;
 	private String password;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 	private Date updateTime;
 

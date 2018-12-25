@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
+<link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap.css}"/>
+<link rel="stylesheet" th:href="@{css/login.css}"/>
+<script th:src="@{lib/jquery.js}"></script>
+<script th:src="@{lib/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{lib/vue.js}"></script>
+<script th:src="@{lib/require.js}"></script>
+    <title>产品制作</title>
+</head>
+
+<body>
+    <!--内容部分-->
+    <div class="qb-content-wrapper">
+        <div class="qb-content">
+            <!--当前位置-->
+            <div class="currentLocation clearfix">
+                <span class="pull-left">产品管理 &gt; 产品制作</span>
+                <div class="nav-btn pull-right">
+                    <input type="button" class="btn btn-info" value="桌面"/>
+                    <input type="button" class="btn btn-info returnBtn" value="返回"/>
+                </div>
+            </div>
+            <!--主要内容-->
+            <div class="container-fluid">
+                <div class="row qb-content-wrapper qb-main-content">
+                    <div class="col-md-12 col-xs-12">
+                        <ul class="nav nav-tabs tabs" role="tablist">
+                            <li role="presentation" class="tab-list active">
+                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">信息检索
+                            <i class="glyphicon glyphicon-remove tab-close"></i></a>
+                            </li>
+                            <li role="presentation" class="tab-list"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">产品制作
+                            <i class="glyphicon glyphicon-remove tab-close"></i></a>
+                            </li>
+                            <li role="presentation" class="tab-list">
+                                <a href="#home1" aria-controls="home" role="tab" data-toggle="tab">信息检索1
+                            <i class="glyphicon glyphicon-remove tab-close"></i></a>
+                            </li>
+                            <li role="presentation" class="tab-list"><a href="#profile" aria-controls="profile1" role="tab" data-toggle="tab">产品制作1
+                            <i class="glyphicon glyphicon-remove tab-close"></i></a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                信息检索
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                产品制作
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="home1">
+                                信息检索
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile1">
+                                产品制作
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $('.tab-close').on('click', function(ev) {
+        var ev=window.event||ev;
+        ev.stopPropagation();
+        //先判断当前要关闭的tab选项卡有没有active类，再判断当前选项卡是否最后一个，如果是则给前一个选项卡以及内容添加active，否则给下一个添加active类
+        var gParent=$(this).parent().parent(),
+            parent=$(this).parent();
+        if(gParent.hasClass('active')){
+            if(gParent.index()==gParent.length){
+                gParent.prev().addClass('active');
+                $(parent.attr('href')).prev().addClass('active');
+            }else{
+                gParent.next().addClass('active');
+                $(parent.attr('href')).next().addClass('active');
+            } 
+        }
+        gParent.remove();
+        $(parent.attr('href')).remove();
+    });
+    </script>
+</body>
+
+</html>

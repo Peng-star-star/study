@@ -1,4 +1,4 @@
-package com.example.springBoot.Interceptor;
+package com.example.springBoot.common.interceptor;
 
 import java.io.OutputStream;
 

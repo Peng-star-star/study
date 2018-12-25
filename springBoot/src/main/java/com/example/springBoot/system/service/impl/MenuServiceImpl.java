@@ -1,5 +1,6 @@
 package com.example.springBoot.system.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.springBoot.common.entity.Tree;
 import com.example.springBoot.common.util.IdUtils;
+import com.example.springBoot.common.util.TreeUtils;
 import com.example.springBoot.system.dao.MenuDao;
 import com.example.springBoot.system.dao.RoleDao;
 import com.example.springBoot.system.entity.Menu;
@@ -39,6 +42,23 @@ public class MenuServiceImpl implements MenuService{
 		}else{
 			return null;
 		}
+	}
+	
+	@Override
+	public Tree<Menu> getMenuTree(){
+		Map<String, Object> params = new HashMap<>();
+		List<Menu> menus =  menuDao.getMenus(params);
+		List<Tree<Menu>> trees = new ArrayList<>();
+		for(Menu menu: menus){
+			 Tree<Menu> tree = new Tree<>();
+	         tree.setId(menu.getId());
+	         tree.setParentId(menu.getParentId().toString());
+	         tree.setText(menu.getMenuName());
+	         tree.setIcon(menu.getIcon());
+	         tree.setUrl(menu.getUrl());
+	         trees.add(tree);
+		}
+		return TreeUtils.build(trees);
 	}
 	
 	@Override

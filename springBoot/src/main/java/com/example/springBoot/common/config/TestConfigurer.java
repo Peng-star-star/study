@@ -1,4 +1,4 @@
-package com.example.springBoot;
+package com.example.springBoot.common.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.example.springBoot.Interceptor.TestInterceptor;
+import com.example.springBoot.common.interceptor.TestInterceptor;
 
 @Configuration
 public class TestConfigurer extends WebMvcConfigurerAdapter{

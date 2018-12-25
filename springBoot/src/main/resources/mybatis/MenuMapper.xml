@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springBoot.system.dao.UserDao">
+<mapper namespace="com.example.springBoot.system.dao.MenuDao">
 
 	<!-- 查询菜单 -->
 	<select id="getMenus" resultType="com.example.springBoot.system.entity.Menu">
