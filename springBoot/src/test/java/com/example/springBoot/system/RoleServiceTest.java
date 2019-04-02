@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
-import com.example.springBoot.system.entity.Role;
-import com.example.springBoot.system.entity.User;
-import com.example.springBoot.system.service.RoleService;
-import com.example.springBoot.system.service.UserService;
+import com.example.system.entity.Role;
+import com.example.system.entity.User;
+import com.example.system.service.RoleService;
+import com.example.system.service.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

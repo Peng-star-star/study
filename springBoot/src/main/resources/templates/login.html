@@ -2,16 +2,12 @@
 <html>
 <head lang="en">
 <meta charset="UTF-8" />
-<link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
-<link rel="stylesheet" th:href="@{lib/bootstrap/css/bootstrap.css}"/>
+<link th:replace="/common/head_style"/>
 <link rel="stylesheet" th:href="@{css/login.css}"/>
-<script th:src="@{lib/jquery.js}"></script>
-<script th:src="@{lib/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{lib/vue.js}"></script>
-<script th:src="@{lib/require.js}"></script>
 <title>登录</title>
 </head>
 <body class="loginpage" style="overflow: hidden; visibility: visible;">
+	<div data-th-include="/common/common_js"></div>
 	<div class="loginbg">
 		<div class="loginbox">
 			<form class="form-signin form-landing2" id="form">
@@ -56,8 +52,7 @@
 	</div>
 </body>
 <script type="text/javascript" th:inline="javascript">
-	var ctx = [[@{/}]];
-	require(['/js/app/login.js'],function(login){
+	require(['/js/login.js'],function(login){
 		login.init();
 	});
 </script>

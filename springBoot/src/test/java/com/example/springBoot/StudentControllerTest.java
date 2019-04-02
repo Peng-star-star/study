@@ -18,8 +18,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.example.springBoot.controller.HelloWorldController;
-import com.example.springBoot.controller.StudentController;
+import com.example.controller.HelloWorldController;
+import com.example.controller.StudentController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

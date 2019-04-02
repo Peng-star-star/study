@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
-import com.example.springBoot.system.entity.Menu;
-import com.example.springBoot.system.service.MenuService;
+import com.example.system.entity.Menu;
+import com.example.system.service.MenuService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

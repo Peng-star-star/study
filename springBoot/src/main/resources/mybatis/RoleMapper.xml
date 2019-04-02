@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springBoot.system.dao.RoleDao">
+<mapper namespace="com.example.system.dao.RoleDao">
 
 	<!-- 查询角色 -->
-	<select id="getRoles" resultType="com.example.springBoot.system.entity.Role">
+	<select id="listRole" resultType="com.example.system.entity.Role">
 		select t.id          as "id",
 		       t.role_name   as "roleName",
 		       t.create_time as "createTime",
@@ -21,7 +21,7 @@
 		  </where>
 	</select>
 	<!-- 新增角色 -->
-	<insert id="addRole" parameterType="com.example.springBoot.system.entity.Role">
+	<insert id="insertRole" parameterType="com.example.system.entity.Role">
 		insert into t_role
 		  (id, role_name, create_time, update_time)
 		values
@@ -29,7 +29,7 @@
 	</insert>
 	
 	<!-- 修改角色 -->
-	<update id="updateRole" parameterType="com.example.springBoot.system.entity.Role">
+	<update id="updateRole" parameterType="com.example.system.entity.Role">
 		update t_role t
 		   set t.role_name = #{roleName}, 
 		   	   t.update_time = sysdate

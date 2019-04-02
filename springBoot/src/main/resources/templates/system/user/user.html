@@ -2,24 +2,7 @@
 <html>
 <head lang="en">
 <meta charset="UTF-8" />
-<link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
-<link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.css}" />
-<link rel="stylesheet" th:href="@{/lib/bootstrap-table/bootstrap-table.css}"/>
-<link rel="stylesheet" th:href="@{/lib/multiple-select/multiple-select.css}"/>
-<link rel="stylesheet" th:href="@{/lib/sweetalert2/sweetalert2.css}"/>
-
-<script data-th-src="@{/lib/jquery.js}"></script>
-<script data-th-src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
-<script data-th-src="@{/lib/bootstrap-table/bootstrap-table.min.js}"></script>
-<script data-th-src="@{/lib/bootstrap-table/locale/bootstrap-table-zh-CN.js}"></script>
-<script data-th-src="@{/lib/bootstrap-notify/bootstrap-notify.min.js}"></script>
-<script data-th-src="@{/lib/multiple-select/multiple-select.js}"></script>
-<script data-th-src="@{/lib/sweetalert2/sweetalert2.js}"></script>
-<script data-th-src="@{/lib/vue.js}"></script>
-<script data-th-src="@{/lib/require.js}"></script>
-
-<script data-th-src="@{/js/common/common.js}"></script>
-<link rel="stylesheet" data-th-href="@{/css/app.css}" />
+<link th:replace="/common/head_style"/>
 <title></title>
 <style type="text/css">
 	.input-group-addon{
@@ -28,6 +11,7 @@
 </style>
 </head>
 <body>
+	<div data-th-include="/common/common_js"></div>
 	<div class="card">
 	    <div data-th-include="system/user/userAdd"></div>
 	    <div class="card-block">
@@ -74,7 +58,7 @@
 </body>
 <script type="text/javascript" th:inline="javascript">
 
-	require([ '/js/app/user/user.js' ], function(index) {
+	require([ '/js/system/user/user.js' ], function(index) {
 		index.init();
 	});
 </script>

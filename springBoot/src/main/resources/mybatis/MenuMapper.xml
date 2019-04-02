@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springBoot.system.dao.MenuDao">
+<mapper namespace="com.example.system.dao.MenuDao">
 
 	<!-- 查询菜单 -->
-	<select id="getMenus" resultType="com.example.springBoot.system.entity.Menu">
+	<select id="listMenu" resultType="com.example.system.entity.Menu">
 		select t.id        as "id",
 		       t.parent_id as "parentId",
 		       t.menu_name as "menuName",
@@ -27,7 +27,7 @@
 		  </where>
 	</select>
 	<!-- 新增菜单 -->
-	<insert id="addMenu" parameterType="com.example.springBoot.system.entity.Menu">
+	<insert id="insertMenu" parameterType="com.example.system.entity.Menu">
 		insert into t_menu
 		  (id, parent_id, menu_name, url, perms, icon, type, order_num, status, remarks)
 		values
@@ -35,7 +35,7 @@
 	</insert>
 	
 	<!-- 修改菜单 -->
-	<update id="updateMenu" parameterType="com.example.springBoot.system.entity.Menu">
+	<update id="updateMenu" parameterType="com.example.system.entity.Menu">
 		update t_menu t
 		   set t.parent_id = #{parentId},
 		       t.menu_name = #{menuName}, 

@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.example.springBoot.controller.HelloWorldController;
+import com.example.controller.HelloWorldController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
