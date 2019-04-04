@@ -1,5 +1,5 @@
 define([ "/js/common/utils.js",
-         "/js/app/user/userAdd.js"], function(utils,add) {
+         "/js/system/user/userAdd.js"], function(utils,add) {
 
 	var _Search_Vue;
 

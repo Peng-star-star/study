@@ -2,12 +2,12 @@
 <html>
 <head lang="en">
 <meta charset="UTF-8" />
-<link th:replace="/common/head_style"/>
-<link rel="stylesheet" th:href="@{css/login.css}"/>
+<link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/login.css}"/>
 <title>登录</title>
 </head>
 <body class="loginpage" style="overflow: hidden; visibility: visible;">
-	<div data-th-include="/common/common_js"></div>
+	<div data-th-include="../templates/common/common_js"></div>
 	<div class="loginbg">
 		<div class="loginbox">
 			<form class="form-signin form-landing2" id="form">
