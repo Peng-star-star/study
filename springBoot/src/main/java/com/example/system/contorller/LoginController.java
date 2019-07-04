@@ -67,6 +67,11 @@ public class LoginController {
 		return "redirect:index";
 	}
 	
+	@RequestMapping("/springboot")
+	public String nameredirectIndex() {
+		return "redirect:index";
+	}
+	
 	@RequestMapping("/index")
 	public String index(ModelMap map){
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
